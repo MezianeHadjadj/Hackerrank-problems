@@ -1,28 +1,21 @@
-function processData(input) {
-    //Enter your code here
-    input=input.split("\n")
-    var input1=input[0].split(" ")
-    var input2=input[1].split(" ")
-    var length=parseInt(input1[0])
-    var k= parseInt(input1[1])
-    var nbr_pairs=0;
-    for (var i=0;i<length;i++){
-        for (var j=0;j<length;j++){
-            if(parseInt(input2[j]) - parseInt(input2[i])===k ){
-                nbr_pairs+=1;
-            }
-        }
-    }
-    console.log(nbr_pairs)
-} 
-
-process.stdin.resume();
-process.stdin.setEncoding("ascii");
-_input = "";
-process.stdin.on("data", function (input) {
-    _input += input;
-});
-
-process.stdin.on("end", function () {
-   processData(_input);
-});
+#!/usr/bin/py
+# Head ends here
+from collections import Counter
+def pairs(a,k):
+    #a contains array of numbers and k is the value of difference
+    answer = 0
+    dic=Counter()
+    for x in a:
+        if dic[x+k] or  dic[x-k] :
+            answer+=dic[x+k]+dic[x-k]
+        dic[x]=1
+            
+    return answer
+# Tail starts here
+if __name__ == '__main__':
+    a = map(int, raw_input().strip().split(" "))
+    _a_size=a[0]
+    _k=a[1]
+    b = map(int, raw_input().strip().split(" "))
+    print pairs(b,_k)
+d
